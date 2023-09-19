@@ -4,7 +4,7 @@ import { Amplify, API, graphqlOperation } from 'aws-amplify'
 import { createTodo } from './graphql/mutations'
 import { listTodos } from './graphql/queries'
 import "@aws-amplify/ui-react/styles.css";
-import { withAuthenticator } from "@aws-amplify/ui-react";
+import { Button, withAuthenticator } from "@aws-amplify/ui-react";
 import awsExports from "./aws-exports";
 Amplify.configure(awsExports);
 
@@ -66,6 +66,7 @@ function App({ signOut, user }) {
           </div>
         ))
       }
+      <Button onClick={signOut}>Sign Out</Button>
     </div>
   )
 }
