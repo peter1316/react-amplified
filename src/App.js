@@ -11,22 +11,22 @@ Amplify.configure(awsExports);
 const initialState = { name: '', description: '' }
 
 function App({ signOut, user }) {
-  const [formState, setFormState] = useState(initialState)
-  const [todos, setTodos] = useState([])
+  const [formState, setFormState] = useState(initialState);
+  const [todos, setTodos] = useState([]);
 
   useEffect(() => {
-    fetchTodos()
-  }, [])
+    fetchTodos();
+  }, []);
 
   function setInput(key, value) {
-    setFormState({ ...formState, [key]: value })
+    setFormState({ ...formState, [key]: value });
   }
 
   async function fetchTodos() {
     try {
       const todoData = await API.graphql(graphqlOperation(listTodos))
       const todos = todoData.data.listTodos.items
-      setTodos(todos)
+      setTodos(todos);
     } catch (err) { console.log('error fetching todos') }
   }
 
@@ -47,15 +47,11 @@ function App({ signOut, user }) {
       <h2>Amplify Todos</h2>
       <input
         onChange={event => setInput('name', event.target.value)}
-        style={styles.input}
-        value={formState.name}
-        placeholder="Name"
+        style={styles.input} value={formState.name} placeholder="Name"
       />
       <input
         onChange={event => setInput('description', event.target.value)}
-        style={styles.input}
-        value={formState.description}
-        placeholder="Description"
+        style={styles.input} value={formState.description} placeholder="Description"
       />
       <button style={styles.button} onClick={addTodo}>Create Todo</button>
       {
